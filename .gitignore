@@ -1,0 +1,4 @@
+article
+db.sqlite3
+secret_key.py
+*.pyc
