@@ -17,7 +17,17 @@ class Command(BaseCommand):
                 'https://newsapi.org/v2/top-headlines?'
                 'country=us&category=business&apiKey=' + options['api_key']
             )
-            print(articles.json()['articles'])
+            for article in articles.json()['articles']:
+                Article.objects.create(
+                    source_id=article['source']['id'],
+                    source_name=article['source']['name'],
+                    author=article['author'],
+                    title=article['title'],
+                    url=article['url'],
+                    url_to_image=article['urlToImage'],
+                    published_at=article['publishedAt'],
+                    content=article['content'],
+                )
         except requests.exceptions.HTTPError:
             raise CommandError('Http Error')
         except requests.exceptions.Timeout:
