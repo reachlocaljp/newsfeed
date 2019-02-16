@@ -1,0 +1,9 @@
+<h1> Latest 20 articles </h1>
+{% for article in article_list %}
+    <p>Title : {{ article.title }} <br>
+       Author : {{ article.author }} <br>
+       Date : {{ article.published_at }} <br>
+       Link: <a href="{{ article.url }}" target="_blank">{{ article.url }}</a> <br>
+       {{ article.description }}
+    <p>
+{% endfor %}
